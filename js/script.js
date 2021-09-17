@@ -1,6 +1,16 @@
     "use strict";
 
-    const number0fFilms = +prompt ('сколько фильмов вы уже посмотрели?', '');
+    let number0fFilms;
+
+    function start() {
+        const number0fFilms = +prompt ('сколько фильмов вы уже посмотрели?', '');
+
+        while (number0fFilms == '' || number0fFilms == null || isNaN(number0fFilms)) {
+            number0fFilms: +prompt('сколько фильмов вы уже посмотрели?', '');
+        }
+    }
+
+    start();
 
     const personalMovieDB = {
         count: number0fFilms,
@@ -10,7 +20,64 @@
         privat: false
     };
 
+function rememberMyFilms() {
+    for(let i = 0; i < 2; i++) {
     const a = prompt('Один из последних просмотренных фильмов?', ''),
+        b = prompt('На сколько очените его?', '');
+
+        if ( a != null && b != null && a !='' && b != '' && a.length < 50 ) {
+        personalMovieDB.movies[a] = b; 
+            console.log('done!'); 
+        } else {
+            console.log('Wrong!');
+            i--;
+        }
+    }
+    console.log(personalMovieDB);
+
+}
+
+// rememberMyFilms();
+
+function  detectPersonalLevel() {
+    if (personalMovieDB.count < 10 ) {
+        console.log('Просмотрено мало');
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30 ) {
+        console.log('Вы классический зритель');
+    } else if (personalMovieDB.count >= 30 ) {
+        console.log('Вы киноман');
+    } else {
+        console.log('Произошла ошибка');
+    }    
+}
+
+// detectPersonalLevel();
+
+function showMyDB(hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
+}
+
+showMyDB(personalMovieDB.privat);
+
+    
+function writeYourGeneres() {
+    for (let i = 1; i <= 3; i++) {
+        personalMovieDB.genres[i - 1]  = prompt(`Ваш любимый жанр по номером ${i}`); //Вопрос 
+    }
+}
+
+writeYourGeneres();
+
+
+
+
+
+
+
+
+     const a = prompt('Один из последних просмотренных фильмов?', ''),
         b = prompt('На сколько очените его?', ''),
         c = prompt('Один из последних просмотренных фильмов?', ''),
         d = prompt('На сколько очените его?', '');
@@ -111,43 +178,47 @@
 
 
 
-  //Урок 15. Применяем условия и циклы.
+  Урок 15. Применяем условия и циклы.
+    const a = prompt('Один из последних просмотренных фильмов?', ''),
+        b = prompt('На сколько очените его?', ''),
+        // c = prompt('Один из последних просмотренных фильмов?', ''),
+        // d = prompt('На сколько очените его?', '');
 
- 
+        personalMovieDB.movies[a] = b; 
+        personalMovieDB.movies[c] = d; 
 
-
-    // мои попытки 
-    // do {
-    //     console.log(anu);
-    //     ++anu; 
-    // }
-    // while (anu < 4);
-
-    // for ( anu = 4; anu < 5; anu++) {
-    //     if (anu === 5 );
-    //     console.log(anu);
-    // }
-
-    // while (anu <= 4 ) {
-    //     console.log(anu); 
-    //     anu++;
-    // }
-        // while (c = d) {
-        //     console.log(c, d);  
-        // }
+        console.log(personalMovieDB);
 
 
-        // if (a > 50 str.length) {
-            
-        // }
 
-        //     // if (num < 49) {
-    //     console.log("Error");
-    // } else if ( num > 100) {
-    //     console.log("Много");
-    // } else {
-    //     console.log("OK!");
-    // }
+    for(let i = 0; i < 2; i++) {
+        const a = prompt('Один из последних просмотренных фильмов?', ''),
+            b = prompt('На сколько очените его?', '');
+
+            // if ( a != null && b != null && a !='' && b != '' && a.length < 50 ) {
+            //     personalMovieDB.movies[a] = b; 
+            //     console.log('done!'); 
+            // } else {
+            //     console.log('Wrong!');
+            //     i--;
+            // }
+    }
+    console.log(personalMovieDB);
+
+
+
+
+if (personalMovieDB.count < 10 ) {
+    console.log('Просмотрено мало');
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30 ) {
+    console.log('Вы классический зритель');
+} else if (personalMovieDB.count >= 30 ) {
+    console.log('Вы киноман');
+} else {
+    console.log('Произошла ошибка');
+}
+
+
 
 
 
@@ -207,3 +278,194 @@ const calc =  (a + b) => {
     console.log('1');
     return a + b;
 }
+
+практика с ютуба на циклы 
+
+
+
+
+Урок 17.  Методы и свойства строк и чисел 
+
+const str = 'test'; 
+console.log( str[2]); // число букв в переменной 
+
+
+1 метод изменений регистра . Меняет значение и отображает в другой строке,  а сторое значение так и остается. 
+
+const str = 'test';
+// console.log(str.toUpperCase());     // вверхний регистр 
+console.log(str.toLowerCase());       // нижний регистр 
+console.log(str);
+
+
+2 метод позволяет найти кусочек моей строки и сказать с какой строки она начинается - поиск от строки 
+
+const fruit = 'Some fruit'; 
+console.log(fruit.indexOf('fruit')); // поиск под строки - должен применять к себе аргумент, с какого индекса начинается код. тоесть слово фрукт начинается с 5 буквы в константе
+
+
+
+// методы с взаимодействиями со троками 
+
+// 1 
+const logg = 'Hello, world'; 
+console.log(logg.slice(6,  12)); // вырезает кусочки текста из строки (первая буква, последняя но он а не включ)
+
+const logg = 'я маленькая лошадка '; 
+console.log(logg.slice(11));  // можно задать только начало. Можно прописать еще так (-7, -1) - и будет читать с права на лево
+
+2 метод  
+console.log(logg.substring(11));  //  можно задавать первый аргумент больше чем второй, но не стоит так делать и не поддерживает отрицательные значения. Комманда аналогична slice. 
+
+3 метод 
+console.log(logg.substr( 10, 5));  //   говорит сколько симфолов нам нужно вырезать (начинаем с такай то буквы, вырезаем нн символов)
+
+
+
+работа с числами 
+Math - математические комманды, они есть в браузерном консоле.
+
+const num = 12.2; 
+console.log(Math.round(num)); // округление числа 
+
+
+const test = " 12.2px";
+console.log(parseInt(test)); // метод который вызывается на числах. Переводит числовую ситстему исчисления:  10ная, 2чкая система. Помучаем числовой тип данных, если мы применяем это на строке, то наша строка обрезается на 0.2рх и превращается в числовой тип данных
+
+console.log(parseFloat(test)); // метод служит чтобы взять число или строку и вернуть в 10ный вариант значения, но возращает не обрезаное( цельное число), а 12,2
+
+
+
+
+ Урок 18. CcallBack  - не все функции идут работая по порядку, не смотря на то, что мы это все прописали.  
+
+    function first () {
+        // что-то выполняется, но в этой функции есть ещё одно действие, которое замедляет пдгружая процесс
+        setTimeout(function() {
+            console.log(1); 
+        }, 500);
+    }
+
+function second() {
+    console.log(2);
+}
+
+first(); 
+second();
+
+function learnJS(lang, callBack) {  // колбэк означает, что петерь эта функция точно прогрузится первой
+    console.log(`i learn: ${lang}`); 
+    callBack();
+}
+
+function done() {
+    console.log('Я прошел этот урок!');
+
+}
+
+learnJS('JavaScript', done);
+
+
+
+
+
+
+ Урок 20.Объекты, деструктуризация объектов. 
+
+const obj = new Object();   // структура обьекта, но она уже редко использ. поскольку длиннй текст
+
+const options = {
+    name: 'test', 
+    with: 1024,
+    height: 1012,
+    colors: {
+        border: 'black',
+        bg: 'red'
+    },
+    makeTest: function() {  // метод  объектов
+        console.log("Test");
+    }
+};
+
+options.makeTest();
+
+const {border, bg} = options.colors; // Деструктуризация - это вытягивания элеммента из обьекта
+console.log(border);  // Деструктуризация - это вытягивания элеммента из обьекта
+console.log(options ["colors"]["border"]);
+
+
+delete options.name;  // что-то удалить 
+console.log(options);
+
+let counter = 0;  // счетчик символов
+for (let key in options) { //Перебор -  показывает все элементы котовые находятся в обьекте. Если вместо in => of -мы не можем вспомошью этого метода передбать обьекты
+    if (typeof(options[key]) === 'object') { 
+        for (let i in options[key]) {
+            console.log(`Свойство ${i} имеет значение ${options[key][i ]}`); 
+            counter++;
+        }
+    } else {
+        console.log(`Свойство ${key} имеет значение ${options[key]}`); 
+    }
+}
+
+console.log(counter);
+
+Функции и методы обьектов
+
+console.log(Object.keys(options).length); // 
+
+
+
+
+
+Урок 21. Масивы и псевдомасивы
+
+Масив - это структура, которая содержит элементы по порядку. Набор каких функций
+
+
+методы в массиве
+const arr = [1, 2, 3, 6, 8];
+
+arr.pop();    // удаляет последние элементы из нашего массива 
+arr.push(10);  // добавляет элемент в конец массива 
+console.log(arr);
+
+for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);             // перебтрает все элементы и выводит в консоль
+}
+
+for (let value of arr) {
+    console.log(value);   // каждый единый элемент, это как цикл . Эта функция подходит для брейк и континио
+}
+
+arr[99] = 0;
+console.log(arr.length);
+console.log(arr);              // так делать нельзя. В консоле выбивает не правильное числовое значение  
+
+const str = prompt("", "");
+const products = str.split(", "); // разделили строчку и получили из нее массив элементов
+products.sort();                  // метод сортировки, сортирует элемменты как строки, по алфавиту.
+console.log(products.join('; '));  // джоин - обьединение обьектов в массиве. Тут этот массив слепил обьекты разделив ; знаком
+
+еще один пример на цифрах 
+const arr = [1, 92, 33, 46, 8]; 
+arr.sort(compareNum);  // тут алгоритм быстрой сортировки, цифры сортируются вот так [1, 33, 46, 8, 92]
+console.log(arr);
+
+function compareNum(a, b) {
+    return a - b;  // спомощью этой формулы, это все сортируется четко [1, 8, 33, 46, 92]
+}
+
+
+псевдомасивы - это обьект структура которого совпадает со структурой массива. Тоесть все тоже самое что и метод, но в нем не будет совсем никаких методов; forEach, filtr, pop, push, join. Это просто структура которая хранит данные по порядку
+
+
+Методы перебора в массиве - for each
+
+arr.forEach(function(item, i, arr) {
+    console.log(`${i}: ${item} внутри массива  ${arr}`);
+});  // метод это функция он принимает ещё в себе коллбег функцию, это перебирает свойства в массиве или обьекте, позволяет удобно манипулировать данными. тут брейк и континио не сработает
+
+arr.map - перебирает каждый элемент но при этом его модифицирует, и вернет новый масив. 
+arr.filter - отвильтровует новый массив.( оставляет только четные числа или только элеммент строка и тд)
